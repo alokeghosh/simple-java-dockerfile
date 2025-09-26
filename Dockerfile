@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim as builder
 WORKDIR /app
 
 # Copy the source code into the container
-COPY App.java .
+COPY src/App.java .
 
 # Compile the Java code
 RUN javac App.java
@@ -20,4 +20,5 @@ WORKDIR /app
 COPY --from=builder /app/App.class .
 
 # Define the command to run the application
+
 CMD ["java", "App"]
