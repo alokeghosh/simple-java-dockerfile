@@ -1,14 +1,19 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk-alpine
+# Stage 1: Build the Java application
+FROM openjdk:17-jdk-slim as builder
 
-# Set the working directory in the container
-WORKDIR /usr/src/myapp
+# Set the working directory
+WORKDIR /app
 
-# Copy the current directory contents into the container at /usr/src/myapp
-COPY . /usr/src/myapp
+# Copy the source code into the container
+COPY App.java .
 
-# Compile the Java source code
-RUN javac src/App.java
+# Compile the Java code
+RUN javac App.java
 
-# Define the command to run the application
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY bin/App.class .
+
 CMD ["java", "App"]
