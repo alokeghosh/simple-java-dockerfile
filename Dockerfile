@@ -8,7 +8,8 @@ WORKDIR /usr/src/myapp
 COPY . /usr/src/myapp
 
 # Compile the Java source code
-RUN javac App.java
+RUN javac src/App.java
 
 # Define the command to run the application
 CMD ["java", "App"]
+
