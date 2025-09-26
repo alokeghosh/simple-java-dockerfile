@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-alpine
 
 # Set the working directory in the container
 WORKDIR /usr/src/myapp
@@ -12,4 +12,3 @@ RUN javac src/App.java
 
 # Define the command to run the application
 CMD ["java", "App"]
-
