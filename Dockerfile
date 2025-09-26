@@ -10,11 +10,14 @@ COPY src/App.java .
 # Compile the Java code
 RUN javac App.java
 
+# Stage 2: Create the final, lightweight image
 FROM openjdk:17-jdk-slim
 
+# Set the working directory
 WORKDIR /app
 
+# Copy the compiled class file from the builder stage
 COPY bin/App.class .
 
+# Define the command to run the application
 CMD ["java", "App"]
-
